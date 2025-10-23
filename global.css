@@ -57,7 +57,7 @@ ul {
   display: flex;
   align-items: center;  /* aligns logo and title vertically */
   justify-content: space-between; /* pushes logo left, title right/center */
-  background: url("../images/body_bg.png") no-repeat center center;
+  background: url("body_bg.png") no-repeat center center;
   background-size: cover; /* stretches background to fit header */
   color: #fff; /* makes text white for better contrast */
 }
