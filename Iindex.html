@@ -1,0 +1,519 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Selemani Car Rental Co</title>
+<link rel="stylesheet" type="text/css" href="css/global.css" />
+<script type="text/javascript">
+function validateForm() {
+	if (validateEmail() && 
+		validateCarSelection() && 
+		validateStartCity() && 
+		validateDestinationCity() && 
+		validatePickupDay() && 
+		validatePickupMonth() && 
+		validatePickupYear() && 
+		validateReturnDay() && 
+		validateReturnMonth() && 
+		validateReturnYear() && 
+		validateReturnTime() && 
+		validateRadioButtons() && 
+		validateFirstName() && 
+		validateInitialMiddleName() && 
+		validateLastName() && 
+		validateAddress() && 
+		validateCity() && 
+		validateZipCode() && 
+		validateTelephone() && 
+		validateCardNumber() && 
+		validateExpiryMonth() && 
+		validateExpiryYear() && 
+		validateCardBrand() ) {return true;} else {return false;}
+	
+}// validateForm function
+// Validate Email input 
+function validateEmail(email) {
+		var regex = /[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/;
+		var email = document.getElementById('email').value;
+		if (email == "" ) {
+			alert("Your Email address is required!");
+			return false;
+		}else if (!regex.test(email)) {
+			alert("Invalid email address");
+			return false;
+		} else {return true;}
+}
+
+// Validate Vehicle rental selection 
+function validateCarSelection(vehicleSelection) {
+	var vehicleSelection = document.getElementById('vehicleSelection');
+	if (vehicleSelection.options[vehicleSelection.selectedIndex].value == "None") {
+			alert("Please indicate your vehicle rental selection!");
+			return false;
+	}else {
+		return true;
+	}
+}
+
+// Validate start from city
+function validateStartCity(from) {
+	var from = document.getElementById('from').value;
+	if(from == "") {
+		alert("Please indicate the start from city");
+		return false;
+	}else {
+		return true;
+	}
+}
+
+//Validate destination city
+function validateDestinationCity(to) {
+	var to = document.getElementById('to').value;
+	if(to == "") {
+		alert("Please indicate a destination city");
+		return false;
+	} else {
+		return true;
+	}
+}
+
+// Validate pickup date
+function validatePickupDay(day) {
+	var day = document.getElementById('day');
+	if (day.options[day.selectedIndex].value == "None") {
+			alert("No pickup day selected. Please select a day");
+			return false;
+	}else {
+		return true;
+	}	
+}
+function validatePickupMonth(month) {
+	var month = document.getElementById('month');
+	if(month.options[month.selectedIndex].value == "None") {
+		alert("No pickup month selected. Please select a month");
+		return false;
+	}else {return true;}
+}
+function validatePickupYear(year) {
+	var year =document.getElementById('year');
+	if(year.options[year.selectedIndex].value == "None"){
+		alert("Please select a pickup year.");
+		return false;
+	}else{return true;}
+}
+
+//Validate return date
+function validateReturnDay(returnDay) {
+	var returnDay = document.getElementById('returnDay');
+	if(returnDay.options[returnDay.selectedIndex].value == "None") {
+		alert('No return day selected. Please select a day');
+		return false;
+	}else {return true;}
+}
+function validateReturnMonth(returnMonth) {
+	var returnMonth = document.getElementById('returnMonth');
+	if(returnMonth.options[returnMonth.selectedIndex].value == "None") {
+		alert('No return month selected. Please, make a selection');
+		return false;
+	}else {return true;}
+}
+function validateReturnYear(returnYear) {
+	var returnYear = document.getElementById('returnYear');
+	if(returnYear.options[returnYear.selectedIndex].value == "None" ) {
+		alert("Please select a return year");
+		return false;
+	}else {return true;}
+}
+// Validate return time
+function validateReturnTime(returnTime) {
+	var returnTime = document.getElementById('returnTime');
+	if(returnTime.value == '') {
+		alert('Please indicate the time you would like to return the vehicle');
+		return false;
+	}else {return true;}
+}
+
+// Validate radio buttons
+function validateRadioButtons() {
+	var OptionChosen = '';
+	var len = document.carRental.Yes.length;
+	var i;
+	for (i = 0; i < len; i++) {
+		if (document.carRental.Yes[i].checked) {
+           OptionChosen = document.carRental.Yes[i].value;
+           break;
+        }
+	}
+	if(OptionChosen == '') {
+		alert('Please indicate your option from the options available');
+		return false;
+	}else {return true;}
+}
+
+// Validate Billing Information
+function validateFirstName(fname) {
+	var fname = document.getElementById('fname').value;
+	if(fname == '') {
+		alert("Please enter your first name");
+		return false;
+	}else {return true;}
+}
+function validateInitialMiddleName(nInitial) {
+	var middleName = document.getElementById('mInitial').value;
+	if(middleName == '') {
+		alert('Please indicate your middle initial name');
+		return false;
+	}else {return true;}	
+}
+function validateLastName(lname) {
+	var lname = document.getElementById('lname').value;
+	if(lname == '') {
+		alert('Please enter your last name');
+		return false;
+	}else {return true;}
+}
+function validateAddress(address) {
+	var address = document.getElementById('address').value;
+	if (address == '') {
+		alert('Your address is required!');
+		return false;
+	}else {return true;}
+} 
+function validateCity(city) {
+	var city = document.getElementById('city').value;
+	if(city == '') {
+		alert('Please enter your city');
+		return false;
+	}else {return true;}
+}
+function validateZipCode(zip) {
+	var zip = document.getElementById('zip').value
+	if (zip == '') {
+		alert('Please enter your zip code!');
+		return false;
+	}else {return true;}
+}
+function validateTelephone(telephone) {
+	var telephone = document.getElementById('telephone').value;
+	if(telephone == '') {
+		alert('Please enter your contact number');
+		return false;
+	}else {return true;}
+}
+
+// Validate Credit/Debit Card Information
+
+function validateCardNumber(cardNumber) {
+	var cardNumber = document.getElementById('cardNumber').value;
+	if(cardNumber == '') {
+		alert('Please provide your card number!');
+		return false;
+	}
+	if(isNaN(cardNumber) &&  cardNumber < 13) {
+		alert('Invalid Card Number!');
+		return false;
+	}else {return true;}
+}
+function validateExpiryMonth(expiryMonth) {
+	var expiryMonth = document.getElementById('expiryMonth');
+	if(expiryMonth.options[expiryMonth.selectedIndex].value == "None") {
+		alert("No expiry month selected! Please select the expiry month");
+		return false;
+	}else {return true;}
+}
+function validateExpiryYear(expiryYear) {
+	var expiryYear = document.getElementById('expiryYear');
+	if(expiryYear.options[expiryYear.selectedIndex].value == "None" ) {
+		alert('No expiery year selected. Please select the expiry year.');
+		return false;
+	}else {return true;}
+}
+function validateCardBrand(cardBrand) {
+	var cardBrand = document.getElementById('cardBrand').value;
+	if(cardBrand == '') {
+		alert('Please enter your card brand name');
+		return false;
+	}else {return true;}
+}
+
+</script>
+</head>
+
+<body>
+<div id="mainWrapper">
+	<div id="pageHeader">
+    	<div id="logo"><img src="images/logo.png" alt="Company Logo" /></div>
+        <div id="company-name"><h1>Selemani Car Rental Co</h1></div>
+    </div>
+  	<div id="content">
+    	<div class="welcome">
+    	<p class="special">Dear customer welcome to Selemani Car Rental Co. To rent a car from us, simply fill in the form below.
+        Please note that all fields marked with an asterisk (*) are <span class="mandatory">mandatory</span> fields!</p>
+        </div>
+    </div>
+    	<form name="carRental" id="carRental" method="post" action="" onSubmit="return validateForm(this);">
+        	<fieldset id="rentalDetails">
+            	<legend>Vehicle Rental Details</legend>
+                <p>
+                	<label for="email">E-mail Address<span class="required">*</span></label>
+                    <input type="text" name="email" id="email" onBlur="validateEmail();"  />
+                </p>
+                <p>
+                	<label for="rentalSelection">Vehicle Rental Selection <span class="required">*</span></label>
+                    <select name="vehicleSelection" id="vehicleSelection" onBlur="validateCarSelection">
+                    	<option value="None" selected selected>Select One</option>
+                        <option value="BMW">BMW</option>
+                        <option value="Audi">Audi</option>
+                        <option value="Mercedes">Mercedes Benz</option>
+                        <option value="Chevrolet">Chevrolet</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Nissan">Nissan</option>
+                        <option value="Ranger-Rover">Ranger Rover</option>
+                        <option value="Land Rover">Land Rover</option>
+                        <option value="Renault">Renault</option>
+                        <option value="Cherokee">Cherokee</option>
+                        <option value="Lexus">Lexus</option>
+                        <option value="Ford">Ford</option>
+                        <option value="VW">Volsk Wagen</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Hyundai">Hyundai</option>
+                    </select>
+                </p>
+                <p>
+                	<label for="from">From (Start From City) <span class="required">*</span></label>
+                    <input type="text" name="from" id="from" />
+                </p>
+                <p>
+                	<label for="to">To (Destination City)<span class="required">*</span></label>
+                    <input type="text" name="to" id="to" />
+                </p>
+                <p>
+                	<label for="pickupDate">Date of Pickup <span class="required"> *</span></label>
+                    <select name="day" id="day">
+                    	<option value="None" selected selected>Select a day</option>
+                    	<option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option> 
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option> 
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>                  
+                     </select>
+                    <select name="month" id="month">
+                    	<option value="None" selected selected>Select a month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <select name="year" id="year">
+                    	<option value="None" selected selected>Select a year</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </p>
+                <p>
+                	<label for="returnDay">Date of Return <span class="required"> * </span></label>
+                    <select name="returnDay" id="returnDay">
+                    	<option value="None" selected selected>Select a day</option>
+                    	<option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option> 
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="25">25</option> 
+                        <option value="26">26</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="29">29</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>                  
+                     </select>
+                    <select name="returnMonth" id="returnMonth">
+                    	<option value="None" selected selected>Select a month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    <select name="returnYear" id="returnYear">
+                    	<option value="None" selected selected>Select a year</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </p>
+                <p>
+                <label for="returnTime">Return Time (HH:MM:SS)<span class="required"> * </span></label>
+                <input type="text" name="returnTime" id="returnTime" />
+                </p>
+            </fieldset>
+            <fieldset id="driverRequired">
+            	<legend>Driver Requirement</legend>
+                <p>Please indicate whether you require a driver by simply making a selection from the options below
+                <span class="required"> * </span></p>
+                <p>
+                	<input type="radio" name="Yes" id="Yes" /> Yes Driver Required <br />
+                    <input type="radio" name="Yes" id="No" /> No Driver Required <br />
+                    <input type="radio" name="Yes" id="insurance" /> Insurance <br />
+                    <input type="radio" name="Yes" id="none" /> None<br />
+                    <input type="radio" name="Yes" id="CDW" /> Collision Damage Waiver <br />
+                    <input type="radio" name="Yes" id="LI" /> Liability Insurance <br />
+                    <input type="radio" name="Yes" id="PAI" /> Personal Accident Insurance<br />
+                    <input type="radio" name="Yes" id="PEC" /> Personal Effects Coverage
+                </p>
+            </fieldset>
+            <fieldset id="rentalDetails">
+            	<legend>Billing Information</legend>
+                <p>
+                <label for="fname">First Name <span class="required"> * </span></label>
+                <input type="text" name="fname" id="fname" />
+            	</p>
+                <p>
+                	<label for="middleInitial">Middle Initial <span class="required"> * </span></label>
+                    <input type="text" name="mInitial" id="mInitial" min="1" maxlength="2" />
+                </p>
+                <p>
+                	<label for="lname">Last Name <span class="required"> * </span> </label>
+                    <input type="text" name="lname" id="lname" />
+                </p>
+                <p>
+                	<label for="address">Address Line 1<span class="required"> * </span></label>
+                    <input type="text" name="address" id="address" />
+                </p>
+                <p>
+                	<label for="city">City <span class="required"> * </span></label>
+                    <input type="text" naname="city" id="city" />
+                </p>
+                <p>
+                	<label for="zipcode">Zip Code <span class="required"> *</span> </label>
+                    <input type="text" name="zip" id="zip" />
+                </p>
+                <p>
+                	<label for="telephone">Telephone <span class="required"> * </span></label>
+                    <input type="text" name="telephone" id="telephone" maxlength="10" />
+                </p>
+            </fieldset>
+            <fieldset id="driverRequired">
+            	<legend>Credit/Debit Card Information</legend>
+                <p>
+                	<label for="cardNumber">Card Number <span class="required"> * </span></label>
+                    <input type="text" name="cardNumber" id="cardNumber" />
+                </p>
+                <p>
+                	<label for="expMonth">Expiry Month<span class="required"> * </span></label>
+                    <select name="expiryMonth" id="expiryMonth">
+                    	<option value="None" selected selected>Select a month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">june</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                    </select>
+                    </p>
+                    <p>
+                    <label for="expYear">Expiry Year</label>
+                    <select name="expiryYear" id="expiryYear">
+                    	<option value="None" selected selected>Select a year</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                    </select>
+                    
+                </p>
+                <p>
+                	<label for="cardBrand">Card Brand <span class="required"> * </span></label>
+                    <input type="text" name="brand" id="cardBrand" />
+                </p>
+            </fieldset>
+            <p>
+            	<input type="submit" name="submit" id="submit" value="Submit Form" />
+            </p>
+        </form>
+<script type="text/javascript">
+	//var input_focus = document.getElementById("email");
+	//input_focus.focus();
+</script>
+    </div><!-- end div content -->
+    <div class="clear"></div>
+    <div id="footer">
+    	<p>Copyright &copy; 2025: <span>Selemani Car Rental Co.</span> - All Rights Reserved!</p>
+    </div>
+</div>
+</body>
+</html>
